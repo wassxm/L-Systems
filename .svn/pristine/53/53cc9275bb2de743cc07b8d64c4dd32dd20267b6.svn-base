@@ -1,0 +1,19 @@
+
+ \section{Extensions du projet}
+
+ 
+            	\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rapport/images/2D.png}
+  \caption{Interface graphique 2D}
+  \label{fig:2D}
+\end{figure}
+
+   
+
+            	\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rapport/images/3D.png}
+  \caption{Interface graphique 3D}
+  \label{fig:3D}
+\end{figure}

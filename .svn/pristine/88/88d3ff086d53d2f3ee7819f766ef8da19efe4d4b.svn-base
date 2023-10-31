@@ -1,0 +1,2 @@
+pour lancer le projet , on se positionne dans le dossier "dist" , on ouvre un terminal
+ et on éxecute la commande suivante : java -jar run.jar

@@ -1,0 +1,25 @@
+
+\section{Améliorations}
+    \subsection{Améliorations faites}
+            Dans le cadre de notre projet, nous avons cherché à améliorer la convivialité et l'esthétique de notre application en ajoutant une fonctionnalité d'animation.
+   Nous avons ajouté une fonctionnalité d'animation à notre projet en utilisant un timer pour améliorer l'expérience utilisateur. Nous avons créé un objet Timer avec une période de rafraîchissement de 200 ms, qui a été associé à un ActionListener pour gérer les événements du timer. Dans la méthode actionPerformed(), nous avons incrémenté l'index de ligne actuel à chaque tick du timer, ce qui a permis de mettre à jour l'affichage des nouvelles lignes dans la zone de dessin à chaque itération. Nous avons également arrêté le timer lorsque toutes les lignes ont été dessinées, en vérifiant si l'index de ligne actuel était supérieur au nombre d'itérations souhaitées. De plus, nous avons redémarré le timer lorsque l'index de ligne actuel était égal à zéro, pour permettre une boucle continue de l'animation. Cette animation a rendu notre projet plus interactif et visuellement attrayant, offrant ainsi une meilleure expérience utilisateur. Toutefois, nous reconnaissons que des améliorations pourraient être apportées à l'avenir, notamment en termes de performances pour un grand nombre d'itérations et de fonctionnalités supplémentaires pour enrichir davantage l'animation.
+           
+    \subsection{Améliorations possibles}
+            
+   
+       \begin{itemize}
+           \item Amélioration de la fluidité de l'animation : en ajustant ajuster la période de rafraîchissement du timer pour obtenir une animation plus fluide, en testant différentes valeurs et en choisissant celle qui offre la meilleure expérience utilisateur en termes de fluidité des mouvements.
+           \item   Personnalisation de l'animation :  tels que la vitesse, la direction, la couleur, etc. Cela peut ajouter de l'interactivité à l'animation et permettre à l'utilisateur de créer des animations personnalisées en fonction de ses préférences.
+           \item Ajout de fonctionnalités avancées : telles que la gestion des collisions, la simulation physique, ou l'intégration de données externes pour influencer le comportement de l'animation.
+       \end{itemize} 
+
+  
+
+    
+
+
+
+    
+
+    
+

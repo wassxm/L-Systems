@@ -1,0 +1,88 @@
+\section{Les L-Systems Stochastiques}
+    \label{sto}Les L-systèmes stochastiques sont une variante des L-systèmes où plusieurs règles de production peuvent être associées à un même symbole, chacune avec une probabilité associée. Cette approche permet de générer des structures plus variées et naturelles. Pour implémenter cette fonctionnalité dans notre projet, nous avons suivi le même principe que celui utilisé dans un L-système standard. Cependant, lorsqu'il s'agit de remplacer un caractère présent dans la liste des alphabets, nous le remplaçons par une règle de production choisie aléatoirement parmi les règles disponibles pour ce caractère. Cela introduit de l'aléatoire dans le processus de génération, ce qui conduit à une plus grande diversité dans les structures générées et à un aspect plus naturel dans les résultats obtenus.
+
+
+Supposons que nous ayons une situation où un événement stochastique se produit avec deux options possibles : A et B. La probabilité de l'événement A se produise est de 0,3 (ou 30\%), tandis que la probabilité de l'événement B se produise est de 0,7 (ou 70\%).
+
+Mathématiquement, nous pouvons représenter cela de la manière suivante :
+
+\[ P(A) = 0,3 \]
+\[ P(B) = 0,7 \]
+
+Où \( P(A) \) est la probabilité de l'événement A et \( P(B) \) est la probabilité de l'événement B.
+
+En utilisant ces probabilités, nous pouvons modéliser la composante stochastique de notre système en utilisant des fonctions de génération de nombres aléatoires pour générer un nombre entre 0 et 1, et en comparant ce nombre avec les probabilités pour déterminer quel événement se produit.
+
+Par exemple, en utilisant du pseudocode :
+
+\begin{center}
+        \fbox{
+   
+    \begin{minipage}{0.6\textwidth}
+    \centering
+      
+    générer un nombre aléatoire entre 0 et 1\\
+    si le nombre aléatoire est inférieur à 0,3:\\
+        l'événement A se produit\\
+    sinon:\\
+        l'événement B se produit\\
+
+    \end{minipage}
+}
+\end{center}
+
+
+
+Cela introduit une probabilité dans notre système, où l'événement A se produira avec une probabilité de 0,3 et l'événement B se produira avec une probabilité de 0,7, rendant le système plus réaliste et imprévisible.
+
+
+\newpage
+Voici la fonctions implémenter pour générer la chaine finale associer au LSystem stochastique:
+
+\begin{lstlisting}[language=Java, frame=single]
+    public String simulation() {
+		
+		StringBuilder chaineCourrante = new StringBuilder(axiom);
+		for (int i = 0; i < this.nombreIteration; i++) {
+			StringBuilder next = new StringBuilder();
+			char[] chars = chaineCourrante.toString().toCharArray();
+			for (char c : chars) {
+				if (this.list.isPresent(String.valueOf(c))) {
+					String[] replacements = this.rulesStochastique.get(c);
+					String replacement = replacements[new Random().nextInt(replacements.length)];
+					next.append(replacement);
+				} else {
+					next.append(c);
+				}
+			}
+			chaineCourrante = next;
+		}
+
+		return chaineCourrante.toString();
+
+	}
+\end{lstlisting}
+
+
+\subsection{Explication du code}
+
+    La fonction simulation() est la méthode principale de la classe LSystemStochastique qui effectue la simulation de l'L-système stochastique en appliquant les règles de production en fonction du contexte. Voici une explication détaillée de son fonctionnement :
+
+    \begin{enumerate}
+    \item La fonction prend en compte un L-système stochastique avec des règles de production associées à des probabilités pour chaque symbole.
+    \item  Elle utilise un StringBuilder pour créer la chaîne résultante de la génération, en commençant par l'axiome initial.
+    \item Elle itère sur le nombre d'itérations spécifié pour la génération de la chaîne.
+    \item Pour chaque caractère dans la chaîne courante, elle vérifie s'il est présent dans la liste des alphabets du système à l'aide de la méthode isPresent() de l'objet this.list.
+    \item Si le caractère est présent dans la liste des alphabets, alors elle récupère les règles de production associées à ce caractère à partir du dictionnaire this.rulesStochastique en utilisant this.rulesStochastique.get(c), où c est le caractère courant.
+    \item Elle choisit ensuite aléatoirement une règle de production parmi les règles disponibles pour ce caractère en utilisant new Random().nextInt(replacements.length) pour obtenir un index aléatoire et accéder à la règle correspondante dans le tableau replacements.
+    \item Elle ajoute le résultat de cette règle de production dans le StringBuilder next.
+    \item Si le caractère n'est pas présent dans la liste des alphabets, elle l'ajoute directement à la chaîne résultante sans effectuer de remplacement.
+    \item Enfin, elle met à jour la chaîne courante avec la chaîne générée à l'itération en cours et répète le processus pour le nombre d'itérations spécifié.
+    \item À la fin, elle retourne la chaîne résultante de la génération comme résultat de la fonction.
+
+
+    
+    \end{enumerate}
+
+   
+

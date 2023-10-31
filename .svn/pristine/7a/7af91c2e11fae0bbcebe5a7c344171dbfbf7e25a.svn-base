@@ -1,0 +1,75 @@
+
+\section{Les L-Systems Contextuels}
+\label{con}Les L-systèmes contextuels sont une extension des L-systèmes de base où les règles de production dépendent non seulement du symbole à remplacer, mais aussi des symboles voisins (contexte). Cela permet de créer des modèles plus complexes et réalistes.
+ la classe LSystemContextuel, qui hérite de la classe AbstractLsystem implémente un L-système contextuel, où les règles de production sont appliquées en fonction du contexte.
+
+ \newpage
+Voici la fonctions implémenter pour générer la chaine finale associer au LSystem Contextuels:
+
+\begin{lstlisting}[language=Java, frame=single]
+public String simulation() {
+		String resultat = axiom;
+
+		for (int i = 0; i < this.nombreIteration; i++) {
+			StringBuilder sb = new StringBuilder();
+
+			for (int j = 0; j < resultat.length(); j++) {
+				String actuel = String.valueOf(resultat.charAt(j));
+				String contexte = "";
+				String predecesseurStrict = actuel;
+
+				if (j > 0) {
+					contexte += resultat.charAt(j - 1);
+					predecesseurStrict = resultat.substring(j - 1, j + 1);
+				}
+				if (j < resultat.length() - 1) {
+					contexte += resultat.charAt(j + 1);
+				}
+
+				String cle = predecesseurStrict + ":" + contexte;
+				String[] production = this.contex.get(cle);
+
+				
+				if (production == null) {
+					production = this.contex.get(actuel);
+				}
+
+	
+				if (production == null) {
+					sb.append(actuel);
+				} else {
+					sb.append(String.join("", production));
+				}
+			}
+
+			resultat = sb.toString();
+		}
+
+		return resultat;
+	}
+\end{lstlisting}
+
+
+\subsection{Explication du code}
+
+    La fonction simulation() est la méthode principale de la classe LSystemContextuel qui effectue la simulation de l'L-système contextuel en appliquant les règles de production en fonction du contexte. Voici une explication détaillée de son fonctionnement :
+
+    \begin{enumerate}
+        \item resultat est initialisée avec la valeur de l'axiome, qui est la chaîne de départ de la simulation.
+        \item  Une boucle for est utilisée pour itérer sur le nombre d'itérations spécifié dans la variable nombreIteration. Cela permet d'appliquer les règles de production pour chaque itération de la simulation.
+
+        \item  À chaque itération, une nouvelle instance de StringBuilder appelée sb est créée pour construire la nouvelle chaîne de caractères résultante.
+        \item  Une autre boucle for est utilisée pour parcourir les caractères de la chaîne resultat à chaque itération. Chaque caractère est considéré comme le caractère actuel pour lequel les règles de production sont appliquées.
+        \item Le contexte du caractère actuel est déterminé en examinant les caractères voisins dans la chaîne resultat. Les caractères précédent et suivant sont utilisés pour former le contexte, et le prédécesseur strict est également déterminé en utilisant une sous-chaîne de la chaîne resultat.
+        \item Une clé de recherche cle est construite en combinant le prédécesseur strict et le contexte. Cette clé est utilisée pour rechercher dans la structure de données contex (qui est supposée être une map) les règles de production associées.
+        \item Si aucune règle de production n'est trouvée pour la clé de contexte, une recherche est effectuée uniquement avec le caractère actuel comme clé.
+        \item Si une règle de production est trouvée pour la clé de contexte, le résultat de la règle de production est ajouté à la nouvelle chaîne de caractères sb.
+        \item Si aucune règle de production n'est trouvée pour le caractère actuel ou pour la clé de contexte, le caractère actuel est simplement ajouté à la nouvelle chaîne de caractères sb.
+        \item  Une fois que tous les caractères de la chaîne resultat ont été traités, la nouvelle chaîne de caractères sb est mise à jour comme la nouvelle chaîne resultat, prête pour l'itération suivante.
+        \item  Une fois que toutes les itérations sont terminées, la chaîne de résultat finale est retournée comme résultat de la simulation.
+        
+        
+    \end{enumerate}
+
+   
+

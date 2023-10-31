@@ -1,0 +1,65 @@
+\documentclass{rapport}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{algorithm2e}
+
+\usepackage{listings} % Inclure le paquet listings
+
+\lstset{ % Configurer les paramètres de lstlisting
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    language=Java
+}
+\usetikzlibrary{shapes.geometric, arrows}
+
+
+\title{Rapport conception} %Titre du fichier
+
+\begin{document}
+
+%----------- Informations du rapport ---------
+
+\logo{logos/Unicaen.png}
+\unif{Université de Caen Normandie}
+\titre{Interpréteur de systèmes de Lindenmeyer}
+
+
+\enseignant{Grégory  \textsc{Bonnet}\\Mihail \textsc{STOJANOVSKI}} %Nom de l'enseignants
+\jury{Mihail \textsc{STOJANOVSKI }\\
+Alexis \textsc{Lechervy}}
+\eleves{Celina \textsc{Bedjou} \\
+          Wassim \textsc{Djeha} \\
+        Louheb \textsc{Kaced}\\
+        Yani \textsc{Belkacemi}} %Nom des étudiants
+
+%----------- Initialisation -------------------
+        
+\fairemarges %Afficher les marges
+\fairepagedegarde %Créer la page de garde
+\tabledematieres %Créer la table de matières
+
+%------------ Corps du rapport ----------------
+\input{01-introduction.tex}
+       
+\input{02-objectifs.tex}
+
+\input{03-lancement.tex}
+
+\input{04-architectureprojet.tex}
+
+\input{05-Revue de la littérature.tex}
+\input{06-Lsystemstandard.tex}
+\input{07-Lsystemcontextuel.tex}
+\input{08-Lsystemstochastique.tex}
+\input{09-Interactionsvues.tex}
+\input{10-Implémentation.tex}
+
+\input{12-Extensions du projet.tex}
+\input{13-Ameliorations.tex}
+
+\input{14-conclusion.tex}
+    \input{15-Reference.tex}
+       
+\end{document}

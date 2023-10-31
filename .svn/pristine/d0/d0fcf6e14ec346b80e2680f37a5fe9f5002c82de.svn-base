@@ -1,0 +1,62 @@
+\section{Interactions avec les différentes vues }
+Dans notre projet, nous avons implémenté deux types d'interactions avec les différentes vues : le Console et l'Interface.
+
+
+
+\subsection{Terminal}
+
+
+	Dans ce projet, un L-système est utilisé pour générer des arbres. Voici comment le projet fonctionne lorsque vous l'exécutez dans une console :
+
+    \textbf{Initialisation }: Les classes  nécessaires sont initialisés comme l'alphabet, les règles,et un les L-systèmes (déterministes, contextuels et stochastiques), et les paramètres tels que le nombre d'itérations, la longueur et l'angle et l'axiome.
+
+    \textbf{Simulation }: Le L-système sélectionné effectue la simulation en appliquant les règles de production sur l'axiome pour un nombre spécifié d'itérations. Cette simulation produit une chaîne de caractères représentant la structure de l'arbre.
+
+    \textbf{Interprétation} : La chaîne générée par la simulation est interprétée pour générer une liste de coordonnées. Les caractères de la chaîne sont sont traduit par les fonctions de rotation, de déplacement et de sauvegarde ou restauration de l'état pour obtenir les coordonnées des points formant la structure de l'arbre.
+
+
+
+\subsection{2D/3D}
+\subsection{pourqoui pas des fenétres 2D/3D qui se chevauchent entre elles ?} 
+l'interface graphique de ce projet est construite en utilisant Java Swing pour créer et organiser les éléments de l'interface utilisateur 2D ,3D. Les interactions de l'utilisateur avec ces éléments déclenchent des événements qui sont gérés par des écouteurs d'événements, lesquels exécutent le code pour générer et afficher les fractales en utilisant l'algorithme L-Système.
+
+La classe principale FenetreLSystem hérite de JFrame, la classe Swing représentant la fenêtre de l'application. Dans le constructeur, divers éléments d'interface utilisateur (JButton, JTextField, JLabel, JComboBox, JPanel) sont initialisés et configurés.\\
+Les éléments sont ajoutés à différents panneaux (par exemple, PanneauManipulation) qui sont ensuite ajoutés à la fenêtre principale avec des gestionnaires de disposition.\\
+Des écouteurs d'événements sont attachés pour détecter les interactions utilisateur et exécuter le code correspondant.\\
+La classe PanneauPrincipale dessine les arbres L-Système en utilisant les cordonnees generer et se met à jour lorsque l'utilisateur interagit avec l'interface. La méthode main initialise l'application en créant une instance de FenetreLSystem.
+
+
+Nous avons décidé d'utiliser deux fenêtres distinctes pour les modes 2D et 3D de notre projet pour plusieurs raisons. Tout d'abord, les modes 2D et 3D de notre application nécessitent des rendus graphiques différents pour afficher correctement les éléments visuels. Le mode 2D utilise des images et des sprites en deux dimensions, tandis que le mode 3D utilise des modèles 3D en trois dimensions. Pour permettre l'affichage approprié de ces éléments graphiques, nous avons opté pour des fenêtres distinctes pour chaque mode afin de garantir que les éléments graphiques soient rendus de manière appropriée et esthétiquement agréable dans chaque mode.\\
+Dans la figure suivante la fenétre adroite représente la fenétre 2D avec comme L system "Dragon" ,et celle agauche une fenetre 3D avec comme L system axiom:F et Regle:F+F avec une longeur de 5 et un angle de 60.\\
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rapport/images/2D3D.png}
+  \caption{Exemple d'affichage de notre projet 2D/3D}
+  \label{fig:interface}
+\end{figure}	
+
+  \subsection{Comment calculer les coordoonées des points dessiner sur les Fenétres 2D/3D? }
+   L'une des principales fonctionnalités de notre projet est l'interpréteur, qui est représenté sous la forme de la fonction "calculateCoordinates()" dans model.Interpretation. Cette fonction est utilisée pour calculer les coordonnées des points qui composent la fractale. Elle prend en entrée un L-système et utilise la méthode "simulation()" de l'objet L-système pour obtenir une chaîne de caractères représentant la fractale. Ensuite, elle parcourt cette chaîne de caractères et calcule les coordonnées de chaque point en utilisant la méthode "rotation()" et en suivant les règles de l'objet L-système. Les coordonnées sont stockées dans une liste et renvoyées en sortie de la méthode. Pour gérer les crochets "[" et "]" dans la chaîne de caractères, qui sont utilisés pour stocker et récupérer les coordonnées et l'angle lorsqu'une branche est créée ou terminée, la méthode utilise également une pile.
+\subsection{Génération du fichier Fenetre3D}
+La classe "Fenetre3D" du package Vue a été créée dans le but de permettre la création d'une fenêtre graphique en 3D utilisant OpenGL et d'afficher des coordonnées 3D à partir d'un ArrayList d'objets "Coordinate". Elle offre plusieurs fonctionnalités essentielles, notamment la gestion des capacités OpenGL, la création d'un canvas OpenGL, l'ajout d'un écouteur d'événements OpenGL, et la gestion de l'animation avec un FPSAnimator. De plus, elle utilise la bibliothèque externe "com.jogamp.opengl" pour faciliter la gestion des fonctionnalités OpenGL. La méthode "getCoord()" permet d'obtenir la liste de coordonnées utilisée dans la scène 3D. La classe est organisée de manière à faciliter la création de la fenêtre 3D et la gestion des événements, bien que certains choix de conception, tels que l'utilisation de variables statiques, méritent d'être notés. La classe "Fenetre3D" joue un rôle clé dans la création de l'interface utilisateur graphique en 3D de notre projet, permettant d'afficher les coordonnées 3D de manière visuelle et interactive.
+
+\subsection{Gérer les exceptions avec des try and catch}
+
+Voici comment le programme gère les différents types de règles en fonction de l'option sélectionnée dans l'interface utilisateur :
+
+   \begin{enumerate}
+       \item Si l'option "lsystemStandart" est sélectionnée, le programme utilise un objet Rules pour stocker les règles de production. Les symboles et les productions sont extraits des champs de texte symboleField1, symboleField2, symboleField3, productionField1, productionField2, productionField3. Les valeurs de ces champs sont d'abord vérifiées pour s'assurer qu'elles ne contiennent que des entiers à l'aide de la méthode contientEntiers de l'objet panneauPrincipale, puis elles sont ajoutées à l'objet Rules en utilisant la méthode addElement avec le symbole extrait du champ de texte comme clé et la production extraite du champ de texte comme valeur. Enfin, l'objet Rules est défini comme règle de production dans l'objet panneauPrincipale en utilisant la méthode setRs.
+       \item   Si l'option "contextuel" est sélectionnée, le programme utilise un objet Map avec des clés de type String et des valeurs de type String[] pour stocker les règles de production. Les symboles et les productions sont extraits des champs de texte symboleField1, symboleField2, symboleField3, productionField1, productionField2, productionField3 de la même manière que dans le cas précédent. Les productions sont ensuite stockées dans un tableau de chaînes de caractères chaine dans l'ordre des champs de texte. Enfin, le tableau chaine est associé à la clé extraite du champ de texte symboleField1 dans l'objet Map ruleContex, qui est défini comme règle de production dans l'objet panneauPrincipale en utilisant la méthode setRuleContext.
+       \item Si aucune des options précédentes n'est sélectionnée, le programme utilise un objet Map avec des clés de type Character et des valeurs de type String[] pour stocker les règles de production. Les symboles et les productions sont extraits des champs de texte symboleField1, symboleField2, symboleField3, productionField1, productionField2, productionField3 de la même manière que dans les cas précédents. Les productions sont ensuite stockées dans un tableau de chaînes de caractères chaine dans l'ordre des champs de texte. Enfin, le tableau chaine est associé à la clé extraite du champ de texte symboleField1 converti en caractère dans l'objet Map ruleStoch, qui est défini comme règle de production dans l'objet panneauPrincipale en utilisant la méthode setRuleStoch.
+   \end{enumerate} 
+
+  
+
+    
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rapport/images/tryandcatch.png}
+  \caption{Exemple de génération d'une fenêtre 2D avec des champs vides pour permettre l'essai de différentes fonctionnalités }
+  \label{fig:tryandcatch}
+\end{figure}	

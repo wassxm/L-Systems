@@ -1,0 +1,6 @@
+Main-Class: vue.Accueil
+Class-Path: lib/gluegen-rt.jar lib/jogl-all.jar lib/otherjar.jar
+ 
+
+
+

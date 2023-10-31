@@ -1,0 +1,44 @@
+
+\section{Les L-Systems Standard}
+Un L-système standard est un type de L-système qui utilise un ensemble de règles de production fixes et déterministes pour remplacer les symboles de l'axiome initial. La croissance de la structure est entièrement déterminée par les règles de production et l'état initial, sans aucune composante aléatoire ou contextuelle.
+	dans le cas de notre projet on creer une class qui herite de la la classe AbstractLsystem. cette classe prend en argument une liste d'alphabet et une liste des regles , un axiome et un nombre d'iteration.
+	avec la methode simulation elle genere une chaine de symboles selon le nombre d'iteration en utilisant une simple boucle. et l'interieur de cette boucle elle repete le processus de remplacement de chaque carctere de la chaine generée avec les regles de production associees. 
+	
+Voici la fonctions implémenter pour générer la chaine finale associer au LSystem Standard:
+\newpage
+\begin{lstlisting}[language=Java, frame=single]
+public String simulation(int nombreIteration) {
+		StringBuilder chaine = new StringBuilder(axiom);
+		List<Coordinate> listC = new ArrayList<>();
+		double x = 100;
+		double y = 100;
+		//listC.add(new Coordinate(x, y));
+
+		for (int i = 0; i < nombreIteration; i++) {
+			StringBuilder newChaine = new StringBuilder();
+			char[] charArray = chaine.toString().toCharArray();
+			for (char c : charArray) {
+				String replacement = listRules.getValue(c);
+				newChaine.append(replacement);
+			}
+			chaine = newChaine;
+			y += longeur;
+			//listC.add(new Coordinate(x, y));
+		}
+		return chaine.toString();
+	}
+\end{lstlisting}
+
+
+\subsection{Explication du code}
+\begin{enumerate}
+    \item La méthode simulation(int nombreIteration) est utilisée pour générer la chaîne de symboles en utilisant les règles de production et le nombre d'itérations donné.
+    \item L'axiome initial, la liste d'alphabet et la liste de règles de production sont passés en arguments dans le constructeur de la classe LSysteme.
+    \item La variable chaine représente la chaîne de symboles générée, et elle est mise à jour à chaque itération de la boucle en remplaçant les symboles selon les règles de production.
+    \item La variable newChaine est utilisée pour construire la nouvelle chaîne de symboles à partir de l'ancienne chaîne en appliquant les règles de production.
+    \item Les coordonnées x et y sont utilisées pour représenter la position des symboles générés, mais leur utilisation n'est pas claire dans le code, car elles sont mises à jour sans être utilisées ultérieurement.
+    \item   Code commenter dans les classes .java pour clarifier leur rôle.
+\end{enumerate}
+
+
+

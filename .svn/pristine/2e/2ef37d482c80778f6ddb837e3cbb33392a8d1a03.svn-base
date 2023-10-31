@@ -1,0 +1,37 @@
+\section{Présentation des bibliothèques utilisés } 
+
+   \subsection{Description détaillée d'un exemple d'implémentation de l'interpréteur}
+    
+    \begin{align*}
+    \textbf{Alphabet:} & \quad A, B\\
+    \textbf{Axiome:} & \quad A \\
+    \textbf{Règles:} & \quad A \rightarrow AB \\
+    \textbf{Règles:} & \quad B \rightarrow A \\
+    \textbf{Angle:} & \quad 60^\circ \\
+    \textbf{Itérations:} & \quad 6
+    \end{align*}
+ 
+	   \begin{enumerate}
+	       \item[*] n = 0, A
+        \item[*] n = 1, AB
+     \item[*] n = 2, AB A
+     \item[*] n = 3, AB A AB
+    \item[*] n = 4, AB A AB AB A
+     \item[*]n = 5, AB A AB AB A AB A AB
+     \item[*]n = 6, AB A AB AB A AB A AB AB A AB AB A
+	   \end{enumerate} 
+    
+
+    \subsection{Présentation des bibliothèques utilisés}
+        \textbf{Swing.JFrame} : cette bibliothèque est souvent utilisée pour créer des interfaces graphiques en Java. Par exemple pour créer notre projet on a  utiliser JFrame pour créer la fenêtre principale de l'application et y ajouter des boutons, des champs de texte, etc.
+
+    \textbf{Com.jogamp.opengl} :La bibliothèque OpenJOGEL est une librairie de programmation en Java qui permet de créer et de manipuler des objets géométriques en 2D et 3D. Elle offre un large éventail de fonctionnalités pour la modélisation, la visualisation et la manipulation d'objets géométriques complexes.\\
+
+    OpenJOGEL est basée sur le système de coordonnées cartésiennes, et fournit des classes pour représenter des points, des vecteurs, des courbes, des surfaces, des polygones, des transformations géométriques, et bien plus encore. Elle offre également des fonctionnalités pour le rendu graphique, l'interaction utilisateur, la gestion des événements et la gestion des primitives graphiques.\\
+
+    \textbf{Java.awt.Graphics }: cette bibliothèque est utilisée pour dessiner des formes et des images dans des applications Java. elle permet de dessiner des graphiques en temps réel, on peut utiliser Graphics pour dessiner les données sur un canevas en utilisant des formes telles que des lignes, des cercles, des courbes, etc.
+
+    \textbf{Java.util.Random} : cette bibliothèque est utilisée pour générer des nombres aléatoires dans des applications Java. elle nous permet des nombres aléatoire elle utile dans le Système stochastique.
+   
+  
+    

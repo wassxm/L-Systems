@@ -1,0 +1,11 @@
+\section{Reference}
+
+
+\begin{itemize}
+    \item Prusinkiewicz, P., \& Lindenmayer, A. (1990). The Algorithmic Beauty of Plants. Springer-Verlag. [Livre][\ref{source}]
+    \item Prusinkiewicz, P., \& Hammel, M. (1993). A Fractal Model of Mountains with Rivers. Proceedings of Graphics Interface '93. [Article][\ref{source}]
+    \item \url{https://en.wikipedia.org/wiki/L-system} [Article Wikipédia sur les L-systèmes] [\ref{source}]
+    \item \url{https://fr.wikipedia.org/wiki/L-Syst%C3%A8me}
+    \item \url{http://paulbourke.net/fractals/lsys/}
+    \item \url{https://www1.biologie.uni-hamburg.de/b-online/e28_3/lsys.html}
+\end{itemize}

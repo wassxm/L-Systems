@@ -1,0 +1,57 @@
+\section{Comment lancer le projet?}
+
+
+\subsection{Creation du fichier .jar }
+\begin{enumerate}
+    \item Étape 1 : Créer un projet Java dans Eclipse
+
+        \begin{itemize}
+            \item Ouvrez Eclipse et créez un nouveau projet Java ou ouvrez un projet Java existant dans lequel vous souhaitez créer un fichier .jar exécutable.
+        \end{itemize}
+
+\item Étape 2 : Configurer le fichier manifeste
+\begin{itemize}
+    \item Dans le projet Eclipse, créez un dossier nommé "META-INF" à la racine du projet, s'il n'existe pas déjà.
+   \item À l'intérieur du dossier "META-INF", créez un fichier appelé "MANIFEST.MF" (assurez-vous de respecter la casse dans le nom du fichier et de l'enregistrer en tant que fichier texte).
+    \item Ouvrez le fichier "MANIFEST.MF" dans un éditeur de texte.
+    \item Ajoutez les informations nécessaires au manifeste. Par exemple, vous pouvez inclure les lignes suivantes :
+ makefile
+
+\fbox{
+  
+    \begin{minipage}{0.4\textwidth}
+    \centering
+        Manifest-Version: 1.0
+        Main-Class: package.MainClass
+    \end{minipage}
+}
+
+
+
+
+\item Assurez-vous de remplacer "package.MainClass" par le nom de la classe principale de votre application Java.
+\end{itemize}
+\item Étape 3 : Exporter le fichier .jar
+
+\begin{itemize}
+    \item Cliquez avec le bouton droit sur le projet dans la vue "Package Explorer" ou "Project Explorer" d'Eclipse.
+    \item Sélectionnez "Export" dans le menu contextuel.
+    \item Dans la boîte de dialogue "Export", développez la catégorie "Java" et sélectionnez "Runnable JAR file".
+    \item Cliquez sur le bouton "Next".
+    \item Sélectionnez le projet et la classe principale à utiliser comme point d'entrée de l'application.
+    \item  Choisissez un emplacement et un nom de fichier pour le fichier .jar exporté.
+    \item Sélectionnez les options d'exportation appropriées (telles que l'exportation des bibliothèques externes dans le fichier .jar ou non).
+    \item  Cliquez sur le bouton "Finish" pour exporter le fichier .jar.
+\end{itemize}
+  
+\end{enumerate}
+
+\subsection{Lancement du projet}
+\begin{enumerate}
+    \item \label{lancer} On se position dans le dossier l-systems-renderer/dist
+    \item On lance le terminal
+    \item On tape la commande \textbf{java -jar Untitled.jar}
+\end{enumerate}
+
+
+
